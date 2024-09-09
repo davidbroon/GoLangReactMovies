@@ -1,0 +1,9 @@
+export { default as EditMovie } from "@/components/EditMovie";
+export { default as ErrorPage } from "@/components/ErrorPage";
+export { default as Genres } from "@/components/Genres";
+export { default as GraphQL } from "@/components/GraphQL";
+export { default as Home } from "@/components/Home";
+export { default as Login } from "@/components/Login";
+export { default as ManageCatalogue } from "@/components/ManageCatalogue";
+export { default as Movie } from "@/components/Movie";
+export { default as Movies } from "@/components/Movies";
