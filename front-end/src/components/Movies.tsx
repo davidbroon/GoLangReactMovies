@@ -7,26 +7,25 @@ import { Link } from "react-router-dom";
 const Movies = () => {
 	const [movies, setMovies] = useState<MovieProps[]>([]);
 	useEffect(() => {
-		const moviesList = [
-			{
-				id: 1,
-				title: "Highlander",
-				release_date: "1986-03-07",
-				runtime: 116,
-				mpaa_rating: "R",
-				description: "Some long description",
-			},
-			{
-				id: 2,
-				title: "Raiders of the Lost Ark",
-				release_date: "1981-06-12",
-				runtime: 115,
-				mpaa_rating: "PG-13",
-				description: "Some long description",
-			},
-		];
-		setMovies(moviesList);
+		const headers = new Headers();
+		headers.append("Content-Type", "application/json");
+
+		const requestOptions = {
+			method: "GET",
+			headers: headers,
+		};
+		(async () => {
+			try {
+				const response = await fetch(`/api/movies`, requestOptions);
+				const data = await response.json();
+				console.log(data);
+				setMovies(data);
+			} catch (error) {
+				console.error("Error:", error);
+			}
+		})();
 	}, []);
+
 	return (
 		<div>
 			<h2>Movies</h2>
